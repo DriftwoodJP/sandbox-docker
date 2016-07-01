@@ -1,0 +1,14 @@
+version: '2'
+services:
+  httpd:
+    build: ./deadwood-httpd
+    ports:
+     - "8080:80"
+    depends_on:
+     - db
+    environment:
+     - DATABASE_HOST=db
+    volumes:
+     - ./deadwood-httpd:/var/www/html
+  db:
+    build: ./deadwood-database
